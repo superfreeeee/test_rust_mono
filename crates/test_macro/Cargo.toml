@@ -1,13 +1,8 @@
 [package]
-name = "test_cfg"
+name = "test_macro"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-test_macro = { path = "../test_macro" }
-
-[features]
-default = ["add"]
-add = []

@@ -455,6 +455,9 @@ dependencies = [
 [[package]]
 name = "test_cfg"
 version = "0.1.0"
+dependencies = [
+ "test_macro",
+]
 
 [[package]]
 name = "test_closure"
@@ -462,6 +465,10 @@ version = "0.1.0"
 
 [[package]]
 name = "test_iter"
+version = "0.1.0"
+
+[[package]]
+name = "test_macro"
 version = "0.1.0"
 
 [[package]]
