@@ -22,3 +22,9 @@ cargo run -p crates/test_xxx
 # run test
 cargo test -p crates/test_xxx
 ```
+
+- lint
+
+```bash
+cargo clippy
+```
