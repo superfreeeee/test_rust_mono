@@ -29,7 +29,7 @@ pub fn is_flush(cards: &Vec<Card>) -> bool {
 
 #[test]
 fn test_is_flush() {
-    use crate::core::core::Hand;
+    use crate::coreutils::core::Hand;
     [
         ("As2s3s4s5s", true),
         ("Ah2h3h4h5h", true),
@@ -60,7 +60,7 @@ pub fn is_straight(cards: &Vec<Card>) -> bool {
 
 #[test]
 fn test_is_straight() {
-    use crate::core::core::Hand;
+    use crate::coreutils::core::Hand;
     [
         ("As2d3c4s5s", true),
         ("4s5d6c7s8s", true),
@@ -83,7 +83,7 @@ pub fn is_straight_flush(cards: &Vec<Card>) -> bool {
 
 #[test]
 fn test_is_straight_flush() {
-    use crate::core::core::Hand;
+    use crate::coreutils::core::Hand;
     [
         ("As2s3s4s5s", true),
         ("6s2s3s4s5s", true),
@@ -113,7 +113,7 @@ pub fn is_royal_flush(cards: &Vec<Card>) -> bool {
 
 #[test]
 fn test_is_royal_flush() {
-    use crate::core::core::Hand;
+    use crate::coreutils::core::Hand;
     [
         ("TsJsQsKsAs", true),
         ("ThJhQhKhAh", true),
@@ -155,7 +155,7 @@ fn get_num_count(cards: &Vec<Card>) -> HashMap<u8, u8> {
 
 #[test]
 fn test_is_foru_of_a_kind() {
-    use crate::core::core::Hand;
+    use crate::coreutils::core::Hand;
     [
         ("AsAsAsAs2s", true),
         ("5s5s5s5s2s", true),

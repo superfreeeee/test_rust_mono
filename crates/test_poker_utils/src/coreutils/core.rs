@@ -23,10 +23,11 @@ impl Card {
 
     /// Create Card with &str
     ///
-    /// As => Spade 1
-    /// Th => Heart 1
-    /// Qd => Diamond 12
+    /// As => Spade 1 \
+    /// Th => Heart 1 \
+    /// Qd => Diamond 12 \
     /// 7c => Club 7
+    #[allow(clippy::should_implement_trait)]
     pub fn from_str(s: &str) -> Option<Card> {
         let bytes = s.as_bytes();
         let num_char = bytes[0] as char;
@@ -53,10 +54,11 @@ impl Card {
     }
 
     pub fn from_strs(list: Vec<&str>) -> Option<Vec<Card>> {
-        list.into_iter().map(|s| Card::from_str(s)).collect()
+        list.into_iter().map(Card::from_str).collect()
     }
 
     /// Reverse action of from_str
+    #[allow(clippy::inherent_to_string)]
     pub fn to_string(&self) -> String {
         let suit_char = match self.suit {
             Suits::Spades => 's',
@@ -137,11 +139,17 @@ pub struct CardDeck {
     rest: Vec<u8>,
 }
 
+impl Default for CardDeck {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl CardDeck {
     pub fn new() -> CardDeck {
         CardDeck {
             rng: rand::thread_rng(),
-            rest: (0..52).into_iter().collect::<Vec<u8>>(),
+            rest: (0..52).collect::<Vec<u8>>(),
         }
     }
 
@@ -167,13 +175,17 @@ impl CardDeck {
     pub fn len(&self) -> usize {
         self.rest.len()
     }
+
+    pub fn is_empty(&self) -> bool {
+        self.rest.is_empty()
+    }
 }
 
 #[cfg(test)]
 mod card_deck_test {
     use std::collections::HashSet;
 
-    use crate::core::CardDeck;
+    use crate::coreutils::CardDeck;
 
     #[test]
     fn test_deal() {
@@ -210,6 +222,7 @@ pub struct Hand {
 }
 
 impl Hand {
+    #[allow(clippy::should_implement_trait)]
     pub fn from_str(s: &str) -> Option<Hand> {
         if s.len() != 10 {
             return None;

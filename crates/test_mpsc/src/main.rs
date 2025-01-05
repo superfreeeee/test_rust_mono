@@ -1,14 +1,20 @@
+#![allow(unused_imports)]
+
 use std::{
     sync::mpsc::{self, Receiver, Sender},
-    thread::{self, JoinHandle},
+    thread,
     time::Duration,
 };
 
 use rand::Rng;
 
+#[allow(dead_code)]
 const PRODUCER_INTERVAL: u64 = 50;
+#[allow(dead_code)]
 const PRODUCER_INTERVAL_STEP_MIN: u64 = 1;
+#[allow(dead_code)]
 const PRODUCER_INTERVAL_STEP_MAX: u64 = 3;
+#[allow(dead_code)]
 const CONSUMER_INTERVAL: u64 = 0;
 
 #[test]
@@ -64,6 +70,7 @@ fn test_producer_and_consumer() {
     });
 }
 
+#[allow(dead_code)]
 fn exec_producer(id: u32, sender: Sender<String>) {
     let mut rng = rand::thread_rng();
 
@@ -89,6 +96,7 @@ fn exec_producer(id: u32, sender: Sender<String>) {
     println!("producer {} finished", id);
 }
 
+#[allow(dead_code)]
 fn exec_consumer(receiver: Receiver<String>) {
     while let Ok(res) = receiver.recv() {
         println!("res = {}", res);

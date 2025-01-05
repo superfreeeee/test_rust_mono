@@ -1,6 +1,9 @@
-use std::mem;
+#![allow(dead_code)]
 
+#[allow(unused_imports)]
 use memoffset::offset_of;
+#[allow(unused_imports)]
+use std::mem;
 
 fn main() {}
 

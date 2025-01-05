@@ -1,3 +1,5 @@
+#![allow(unused_imports)]
+
 use futures::{
     executor::block_on,
     future::{self, BoxFuture},
@@ -6,7 +8,6 @@ use futures::{
     FutureExt,
 };
 use std::{
-    f32::consts::PI,
     future::Future,
     ops::{Deref, DerefMut},
     pin::Pin,
@@ -153,6 +154,7 @@ struct ManualFutureState {
 }
 
 impl ManualFutureState {
+    #[allow(dead_code)]
     fn update(&mut self, done: bool) {
         println!("[{:?}] update", sys_now());
         self.count += 1;
@@ -162,6 +164,7 @@ impl ManualFutureState {
                 waker.wake();
             }
         } else {
+            #[allow(clippy::collapsible_else_if)]
             if let Some(waker) = self.waker.as_ref() {
                 waker.wake_by_ref();
             }
@@ -243,6 +246,7 @@ impl DerefMut for Test {
     }
 }
 
+#[allow(dead_code, unused_variables)]
 fn test(num: &mut u32) {}
 
 #[test]
@@ -253,10 +257,12 @@ fn test_deref() {
 
 /// =============================================
 /// ref lifetime
+#[allow(dead_code)]
 async fn foo(x: &u8) -> u8 {
     *x
 }
 
+#[allow(dead_code)]
 fn bar() -> impl Future<Output = u8> {
     let x = 5;
     async move {
@@ -278,6 +284,7 @@ fn test_mutex() {
     block_on(future_mutex_test());
 }
 
+#[allow(dead_code)]
 fn sync_mutex_test() {
     println!("go");
 
@@ -301,6 +308,7 @@ fn sync_mutex_test() {
     });
 }
 
+#[allow(dead_code)]
 async fn future_mutex_test() {
     let mutex = futures::lock::Mutex::new(0);
 

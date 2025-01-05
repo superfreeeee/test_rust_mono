@@ -9,7 +9,7 @@ fn main() {
 
 #[test]
 fn test_regex() {
-    let RE = Regex::new(
+    let email_reg = Regex::new(
         r"(?x)
         ^(?P<login>[^@\s]+)@
         ([[:word:]]+\.)*
@@ -18,9 +18,10 @@ fn test_regex() {
     )
     .unwrap();
 
-    println!("{:?}", extract_login(&RE, r"I❤email@example.com"));
+    println!("{:?}", extract_login(&email_reg, r"I❤email@example.com"));
 }
 
+#[allow(dead_code)]
 fn extract_login<'a>(re: &Regex, input: &'a str) -> Option<&'a str> {
     re.captures(input)
         .and_then(|cap| cap.name("login").map(|login| login.as_str()))
@@ -34,6 +35,7 @@ fn test_hashtags() {
     assert_eq!(tags.len(), 3);
 }
 
+#[allow(dead_code)]
 fn extract_hashtags(text: &str) -> HashSet<&str> {
     lazy_static! {
         static ref HASHTAG_REGEX: Regex = Regex::new(r"\#[a-zA-Z][0-9a-zA-Z_]*").unwrap();
