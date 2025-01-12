@@ -5,7 +5,7 @@ use super::Card;
 /// Flush predication
 ///
 /// flush: five card with same suits
-pub fn is_flush(cards: &Vec<Card>) -> bool {
+pub fn is_flush(cards: &[Card]) -> bool {
     if cards.len() != 5 {
         return false;
     }
@@ -44,7 +44,7 @@ fn test_is_flush() {
 /// Straight predication
 ///
 /// straight: five card's number are continous
-pub fn is_straight(cards: &Vec<Card>) -> bool {
+pub fn is_straight(cards: &[Card]) -> bool {
     if cards.len() != 5 {
         return false;
     }
@@ -77,7 +77,7 @@ fn test_is_straight() {
 }
 
 /// Straight Flush predication
-pub fn is_straight_flush(cards: &Vec<Card>) -> bool {
+pub fn is_straight_flush(cards: &[Card]) -> bool {
     is_flush(cards) && is_straight(cards)
 }
 
@@ -100,7 +100,7 @@ fn test_is_straight_flush() {
 }
 
 /// Royal Flush predication
-pub fn is_royal_flush(cards: &Vec<Card>) -> bool {
+pub fn is_royal_flush(cards: &[Card]) -> bool {
     if !is_straight_flush(cards) {
         return false;
     }

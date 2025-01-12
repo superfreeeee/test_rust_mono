@@ -231,6 +231,7 @@ fn test_manual_future() {
 
 /// =============================================
 /// deref
+#[allow(dead_code)]
 struct Test;
 
 impl Deref for Test {
