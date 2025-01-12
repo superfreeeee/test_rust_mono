@@ -9,5 +9,5 @@ macro_rules! inc {
 #[test]
 fn test_inc() {
     println!("inc(1) = {}", inc!(1));
-    inc!(1);
+    let _ = inc!(1);
 }
