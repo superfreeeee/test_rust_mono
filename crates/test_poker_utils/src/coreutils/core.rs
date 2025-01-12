@@ -193,10 +193,10 @@ mod card_deck_test {
         let mut deal_cards = HashSet::new();
 
         let mut deck = CardDeck::new();
-        while deck.len() > 0 {
+        while !deck.is_empty() {
             deal_count += 1;
             let card = deck.deal().unwrap();
-            assert_eq!(deal_cards.insert(card), true);
+            assert!(deal_cards.insert(card));
         }
         assert_eq!(deal_count, 52);
         assert_eq!(deal_cards.len(), 52);
@@ -241,5 +241,5 @@ impl Hand {
 
 #[test]
 fn test_hand_from_str() {
-    assert_eq!(Hand::from_str("As2s3s4s5s").is_some(), true);
+    assert!(Hand::from_str("As2s3s4s5s").is_some());
 }
