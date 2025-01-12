@@ -8,10 +8,7 @@ fn test_collect_option() {
     let mut count = 0;
     let vec = vec![Some(1u8), Some(2u8), None, Some(3u8)]
         .into_iter()
-        .map(|num| {
-            count += 1;
-            num
-        })
+        .inspect(|_| count += 1)
         .collect::<Option<Vec<_>>>();
     // 1. meet None => None, and early return
     assert_eq!(vec, None);
